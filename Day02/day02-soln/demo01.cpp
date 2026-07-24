@@ -105,6 +105,6 @@ G. Commands for this file
 #include <stdio.h>
 
 int main() {
-    printf("hello world\n");
+    printf("hell
     return 0;
 }

@@ -270,6 +270,28 @@ int main() {
 }
 ```
 
+## The `this` pointer
+
+- Every non-static member function in C++ receives an implicit pointer named `this` that points to the object on which the member function was called.
+- The type of `this` inside a non-const member function of class `C` is `C*`; inside a `const` member function it is `const C*`.
+- Use `this` when you need the object's address, to disambiguate member names from parameters, or to return the object from a member function (commonly `return *this;`).
+
+Example:
+
+```cpp
+class Foo {
+    int x;
+public:
+    void set(int x) { this->x = x; } // use this to refer to the data member
+    Foo& init() { x = 0; return *this; } // return by reference using *this
+};
+```
+
+Interview notes:
+
+- Explain that `this` is not a regular variable you declare — the compiler supplies it automatically inside member functions.
+- Mention the difference between `this` (pointer) and returning `*this` (object reference) when designing fluent APIs.
+
 ### Explanation
 
 The program below is the same type of example that you just ran in the C++ file:
