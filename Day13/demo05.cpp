@@ -48,7 +48,8 @@ public:
 		cout << "price: ";
 		cin >> price;
 	}
-	virtual void display() = 0 {
+	virtual void display() = 0 
+	{
 		cout << "title: " << title << endl;
 		cout << "price: " << price << endl;
 	}
@@ -68,12 +69,12 @@ public:
 		pages = pg;
 	}
 	virtual void accept() {
-		product::accept();
+		product::accept(); // early binding
 		cout << "pages: ";
 		cin >> pages;
 	}
 	virtual void display() {
-		product::display();
+		product::display(); // early binding
 		cout << "pages: " << pages << endl;
 	}
 };
@@ -89,12 +90,12 @@ public:
 		duration = d;
 	}
 	virtual void accept() {
-		product::accept();
+		product::accept(); // early binding
 		cout << "duration: ";
 		cin >> duration;
 	}
 	virtual void display() {
-		product::display();
+		product::display(); // early binding
 		cout << "duration: " << duration << endl;
 	}
 };
@@ -123,12 +124,16 @@ int main() {
 	}
 	return 0;
 }
-
             
 /*
 if a class virtual fn doent have suitable impl or partial impl
 then make it pure virtual fn by using =0 in the declaration of virtual fn.
-- Pure virtual fun has body 
+- Pure virtual fun may not have body
+- Pure virtual fn must be overridden in derived class, otherwise derived class also becomes abstract class and can not be used to create object of derived class.
+- If class contains at least one pure virtual fn, then that class is called abstract class.
+- If object of class is not applicable/desirable, then class should be abstract class.
+- Abstarct class can have data members and other members fn as well (along with pure virtual fn) which an be resused by derived class.
+- They can also have ctor and destructor, which can be used to initialize and cleanup the data members of abstract class.
 - product ke vtable mai how many entries honge? 3
 - product ke vtable mai 2 entries honge, accept(), display() and that will be null
 - it will get assigned in derived class, so that derived class can be used to create object.
