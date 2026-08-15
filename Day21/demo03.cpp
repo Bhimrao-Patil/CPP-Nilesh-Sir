@@ -2,7 +2,17 @@
 foundation of modern C++ programming
 Shallow copy vs Deep copy:
 read sir notes for more details
-
+Assign Operator Overloading = 
+	If not implemented, compiler provides default assignment operator for every class.
+	Default assign operator performs bitwise copy a.k.a. shallow copy.
+copy constructor: sometimes we don't need to create a copy of it
+- to prevent copies of object being created and also deny pass/return- make copy ctor of class private
+private:Date(const Date& other) {
+	return *this;
+	}
+- Exaple:
+osteram isteram class has oprivate copt ctror they can never by pass/retrun by value, they can only be passed by reference
+- to prevent assign obj to anathor obj of class - make assign operator of class private
 */
 #include <iostream>
 using namespace std;
